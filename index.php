@@ -1,3 +1,8 @@
+ <?php
+//$hour = readline('Enter hour');
+$hour = 22;
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -12,8 +17,17 @@
 
     <body>
         <h1>Lorem Ipsum</h1>
-        
-        <p>Hello, <?php echo "Jerri"; ?>!</p>
+
+        <?php if  ($hour < 12): ?>
+                Good Morning
+            <?php elseif ($hour < 18): ?>
+               Good Afternoon
+           <?php elseif ($hour < 22): ?>
+                Good Evening
+           <?php else : ?>
+               Good Night
+          <?php endif; ?>
+        <!-- <p>Hello, <?php echo $name  ?>!</p> -->
 
     </body>
 

@@ -16,8 +16,10 @@ $hour = 22;
     </head>
 
     <body>
+        <header>
         <h1>Lorem Ipsum</h1>
-
+</header>
+<main>
         <?php if  ($hour < 12): ?>
                 Good Morning
             <?php elseif ($hour < 18): ?>
@@ -28,7 +30,8 @@ $hour = 22;
                Good Night
           <?php endif; ?>
         <!-- <p>Hello, <?php echo $name  ?>!</p> -->
-
+           </main>
     </body>
-
+            <footer>
+             </footer>
 </html>

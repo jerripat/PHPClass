@@ -1,8 +1,8 @@
 <?php
 
-$message = "Hello Again";
-echo $message;
-$count = 3;
-$price = 1.99;
+$primes = [2,3,5,7,11,13,17,19];
 
-var_dump($count * $price);
+for($i = 1; $i <= 3; $i++){
+    echo $primes[$i] . ", ";
+    
+}

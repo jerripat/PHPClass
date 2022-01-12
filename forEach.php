@@ -1,18 +1,16 @@
-<?php 
+<?php
 
-$articles = [
-[
-    'title' => 'First Post',
-    'content' => 'This is the first of many posts',
-],
-[
-    'title' => 'Another Post',
-    'content' => 'Yet another facinating  post'
-],
-[
-    "title" => "Read this!",
-    "content" => "You must read this now!",
-]
+
+$articles = [    [
+        'title' => 'First Post',
+        'content' => 'This is the first of many posts',    ], 
+        [
+        'title' => 'Another Post',
+        'content' => 'Yet another facinating  post'    ],
+        [
+        "title" => "Read this!",
+        "content" => "You must read this now!",
+        ]
 ];
 ?>
 <!DOCTYPE html>
@@ -32,16 +30,16 @@ $articles = [
         </header>
         <main>
             <div>
-                <label> Fruit available today </label>
+                <label> Latest articles </label>
                 <ul>
-                    <?php  foreach($articles as $article): ?>
+                    <?php foreach ($articles as $article): ?>
                         <li>
                             <article>
                                 <h2><?= $article['title']; ?></h2>    
                                 <p> <?= $article['content']; ?></p>
                             </article>
                     </li>
-                    <?php endforeach; ?>
+                    <?php  endforeach; ?>
                     </ul>
            </div>
            

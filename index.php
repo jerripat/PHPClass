@@ -15,4 +15,52 @@ if (mysqli_connect_error()) {
 else {
     echo "Connected Successfully";
 }
+$sql = "SELECT * FROM cms_article
+            ORDER BY published_at;";
+            
+$results = mysqli_query($conn, $sql);
+
+if ($results === false) {
+    echo mysqli_error($conn);
+}
+else {
+    $articles = mysqli_fetch_all($results);
+
+    var_dump($articles);
+}
 ?>
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" acontent="width=device-width, initial-scale=1.0">
+    
+     <title>My Blog</title>
+ </head>
+    <header>
+            <h1>My Blog</h1>    
+    </header>
+    <body>
+        <main>
+            <?php if (empty($articles)): ?>
+                <p>No articles found.</p>
+            <?php
+else: ?>
+                
+            <ul>
+                 <?php foreach ($articles as $article): ?>
+                        <li>
+                            <article>
+                                    <h2><?= $article['title']; ?></h2>    
+                                    <p><?= $article['content']; ?></p>
+                            </article>    
+                       </li>
+                <?php
+    endforeach; ?> 
+            </ul>
+            <?php
+endif; ?>
+        </main>
+    </body>
+ </html>

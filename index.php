@@ -1,17 +1,5 @@
 <?php
-
-$db_host = "localhost";
-$db_name = "cms";
-$db_user = "jerripat";
-$db_pass = "Dadio1005";
-
-$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-
-if (mysqli_connect_error()) {
-
-    echo mysqli_connect_error();
-    exit;
-}
+require 'includes/database.php';
 
 $sql = "SELECT *  FROM cms_article ORDER BY published_at;";
 
@@ -21,22 +9,12 @@ if ($results === false) {
     echo mysqli_error($conn);
 }
 else {
-    $articles = mysqli_fetch_all($results,MYSQLI_ASSOC);
+    $articles = mysqli_fetch_all($results, MYSQLI_ASSOC );
   }
-?>
- <!DOCTYPE html>
- <html lang="en">
- <head>
-     <title>My Blog</title>
-     <meta charset="UTF-8">
-</head>
-<body>
-    
-    <header>
-            <h1>My Blog</h1>    
-    </header>
-    
-        <main>
+?> 
+<?php require 'includes/header.php'; ?>
+
+
             <?php if (empty($articles)): ?>
                 <p>No articles found.</p>
             <?php else: ?>
@@ -51,6 +29,5 @@ else {
                         <?php endforeach; ?>
                     </ul>
                     <?php endif; ?>
-        </main>
-    </body>
- </html>   
+<?php require 'includes/footer.php'; ?>                    
+       

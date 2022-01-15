@@ -1,17 +1,7 @@
 <?php
 
-$db_host = "localhost";
-$db_name = "cms";
-$db_user = "jerripat";
-$db_pass = "Dadio1005";
+require 'includes/database.php';
 
-$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-
-if (mysqli_connect_error()) {
-
-    echo mysqli_connect_error();
-    exit;
-}
 if (isset($_GET[' id ']) && is_numeric($_GET[' id '])){
     
 $sql = "SELECT * 
@@ -32,18 +22,7 @@ else {
     $article = null;
 }
 ?>
- <!DOCTYPE html>
- <html lang="en">
- <head>
-     <title>My Blog</title>
-     <meta charset="utf-8">
- </head>
- <body>
- 
-    <header>
-            <h1>My Blog</h1>    
-    </header>
-   <main>
+<?php require 'includes/header.php'; ?>
         <?php if ($article === null): ?>
            <p>No articles found.</p>
         <?php else: ?>
@@ -53,6 +32,4 @@ else {
                     <p><?= $article['content']; ?></p>
                </article>
         <?php endif; ?>
-        </main>
-    </body>
- </html>
+ <?php require 'includes/footer.php'; ?>      

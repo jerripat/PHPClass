@@ -12,10 +12,12 @@ if (mysqli_connect_error()) {
     echo mysqli_connect_error();
     exit;
 }
+if (isset($_GET[' id ']) && is_numeric($_GET[' id '])){
+    
 $sql = "SELECT * 
              FROM cms_article
-             WHERE id = "  . $_GET[ ' id '];
-             
+             WHERE id = " . $_GET['id'];
+            
 $results = mysqli_query($conn, $sql);
 
 if ($results === false) {
@@ -23,7 +25,11 @@ if ($results === false) {
 }
 else {
     
-    $article = mysqli_fetch_assoc($esults);
+    $article = mysqli_fetch_assoc($results);
+}
+}else {
+    
+    $article = null;
 }
 ?>
  <!DOCTYPE html>
@@ -37,22 +43,16 @@ else {
     <header>
             <h1>My Blog</h1>    
     </header>
-    
-    
-    
-    
-        <main>
-            
-            <?php if ($article === null): ?>
-                <p>No articles found.</p>
-            <?php else: ?>
+   <main>
+        <?php if ($article === null): ?>
+           <p>No articles found.</p>
+        <?php else: ?>
                 
-                             <article>
-                                   <?= $article[ 'title']; ?>    
-                                    <p><?= $article[' content ']; ?></p>
-                            </article>
-                     
-                    <?php endif; ?>
+                <article>
+                    <h2><<?= $article['title']; ?></h2>
+                    <p><?= $article['content']; ?></p>
+               </article>
+        <?php endif; ?>
         </main>
     </body>
  </html>

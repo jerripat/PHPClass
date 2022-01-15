@@ -13,12 +13,7 @@ if (mysqli_connect_error()) {
     exit;
 }
 
-$sql = "SELECT * 
-             FROM cms_article
-            ORDER BY published_at;";
-
-
-
+$sql = "SELECT *  FROM cms_article ORDER BY published_at;";
 
 $results = mysqli_query($conn, $sql);
 
@@ -31,15 +26,16 @@ else {
 ?>
  <!DOCTYPE html>
  <html lang="en">
-
  <head>
-     <meta charset="UTF-8">
      <title>My Blog</title>
- </head>
+     <meta charset="UTF-8">
+</head>
+<body>
+    
     <header>
             <h1>My Blog</h1>    
     </header>
-    <body>
+    
         <main>
             <?php if (empty($articles)): ?>
                 <p>No articles found.</p>
@@ -48,8 +44,8 @@ else {
                         <?php foreach ($articles as $article): ?>
                             <li>
                              <article>
-                                    <h2><a href="article.php">< ?= $article[ ' tid ']; ?>"><?= $article[ 'title']; ?>"</a></h2>    
-                                    <p><?= $article[' content ']; ?></p>
+                                    <h2><a href="article.php?id=<?= $article[ 'id']; ?>"><?= $article[ 'title']; ?></a></h2>    
+                                    <p><?= $article['content']; ?></p>
                             </article>
                         </li>    
                         <?php endforeach; ?>
@@ -57,30 +53,4 @@ else {
                     <?php endif; ?>
         </main>
     </body>
- </html>
-     <title>My Blog</title>
- </head>
-    <header>
-            <h1>My Blog</h1>    
-    </header>
-    <body>
-        <main>
-            <?php if (empty($article)): ?>
-                <p>No articles found.</p>
-            <?php
-else:
-?> 
-                <ul>
-                        <?php foreach ($articles as $article): ?>
-                            <li>
-                             <article>
-                                    <h2><a href="article.php">< ?= $article[ ' id ']; ?>"><?= $article[ 'title']; ?>"</a></h2>    
-                                    <p><?= $article[' content ']; ?></p>
-                            </article>
-                        </li>    
-                        <?php endforeach; ?>
-                    </ul>
-                   <?php endif; ?>
-        </main>
-    </body>
- </html>
+ </html>   

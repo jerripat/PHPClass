@@ -15,7 +15,7 @@ if (mysqli_connect_error()) {
 
 $sql = "SELECT * 
              FROM cms_article
-            ORDER BY published_at;";
+             WHERE id = "  . $_GET[ 'id '];
 
 
 
@@ -61,32 +61,6 @@ else:
                         <?php endforeach; ?>
                     </ul>
                     <?php endif; ?>
-        </main>
-    </body>
- </html>
-     <title>My Blog</title>
- </head>
-    <header>
-            <h1>My Blog</h1>    
-    </header>
-    <body>
-        <main>
-            <?php if (empty($article)): ?>
-                <p>No articles found.</p>
-            <?php
-else:
-?> 
-                <ul>
-                        <?php foreach ($articles as $article): ?>
-                            <li>
-                             <article>
-                                    <h2><a href="article.php">< ?= $article[ ' id ']; ?>"><?= $article[ 'title']; ?>"</a></h2>    
-                                    <p><?= $article[' content ']; ?></p>
-                            </article>
-                        </li>    
-                        <?php endforeach; ?>
-                    </ul>
-                   <?php endif; ?>
         </main>
     </body>
  </html>

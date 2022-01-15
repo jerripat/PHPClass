@@ -26,18 +26,14 @@ if ($results === false) {
     echo mysqli_error($conn);
 }
 else {
-    $article = mysqli_fetch_all($results);
-
-    var_dump($article);
-}
+    $articles = mysqli_fetch_all($results,MYSQLI_ASSOC);
+  }
 ?>
  <!DOCTYPE html>
  <html lang="en">
 
  <head>
      <meta charset="UTF-8">
-     <meta name="viewport" acontent="width=device-width, initial-scale=1.0">
-    
      <title>My Blog</title>
  </head>
     <header>
@@ -47,9 +43,7 @@ else {
         <main>
             <?php if (empty($articles)): ?>
                 <p>No articles found.</p>
-            <?php
-else:
-?>
+            <?php else: ?>
                     <ul>
                         <?php foreach ($articles as $article): ?>
                             <li>

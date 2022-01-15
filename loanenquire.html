@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Loan Enquiry</title>
+        
+
+    </head>
+
+    <body>
+        <form name="loan" method="post" action="loan_handler.php">
+            <h1>Enter your details:</h1>
+                <p><strong>Your full name</strong><input type = "text"
+                name = "fullname" size = "30" maxlength = "30" /></p>
+                
+                <p><strong>Your E-Mail Address</strong><input type = "text"
+                name = "emailaddress" size = "30" maxlength = "30" /></p>
+                
+                <p><strong>I am</strong><input type = "radio" nane = "employment" value = "unemployed" />unemployed<input type = "radio" name = "employment" value = "employed" />employed</p>
+                
+                <p><strong>Your age</strong>
+                <select name = "age">
+                    <option value ="">Make a selection</option>
+                    <option value = "18 - 29">18 - 29</option>
+                    <option value = "30 - 60">30 - 59</option>
+                    <option value = "60+">Over 60</option>
+                </select></p>
+                
+                <p><input type = "submit" name = "Submit" value = "Submit" /></p>
+            
+        </form>
+    </body>
+</html>
+
+
+
+

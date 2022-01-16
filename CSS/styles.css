@@ -1,0 +1,20 @@
+
+body{
+             background-color: #4e4d57;
+         }
+        .square {
+            background: #3254a8;
+            width: 25rem;
+            aspect-ratio: 2/1;
+            border: solid black;
+           box-shadow:15px 15px 10px rgba(60,56,140,1);
+           
+        }   
+        .center{
+            background-color: blue;
+            display: block;
+            margin: auto;
+            width: 30%;
+            height: 100px;
+        }        
+       

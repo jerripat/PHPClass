@@ -1,23 +1,16 @@
-
- 
-      
-
-
-title{
-    color:darkgreen;
-}
-h1,h2{
-    color:rgb(212, 203, 68);
-}
-html {
+        html {
             font-size: 100%;
         }
-
+        title{
+            color:darkgreen;
+        }
+        h1,h2{
+            color:rgb(212, 203, 68);
+        }
         body {
             background-color: #9695a1;
             text-align: center;
         }
-
         .square {
             background: #3254a8;
             width: 25rem;
@@ -52,6 +45,12 @@ html {
         }
 
         #textBox2 {
+            width: 15rem;
+            height: auto;
+            margin-left: 5rem;
+            text-align:center;
+        }
+         #textBox3 {
             width: 15rem;
             height: auto;
             margin-left: 5rem;

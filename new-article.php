@@ -1,72 +1,85 @@
-<?php 
+<?php
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' ) {   
-    
     require 'includes/database.php';
-    
-        $sql = "INSERT INTO cms_article (title, content, published_at)
-                     VALUES (' " .  $_POST[ 'title' ] . " ' , ' "
-                                           .  $_POST[ 'content' ] . " ' , ' "
-                                           .  $_POST[ 'published_at' ] . " ' ) ";
-                       
-                    
-        $results = mysqli_query($conn, $sql);
 
+    $sql = "INSERT INTO article (title, content, published_at)
+            VALUES (?, ?, ?)";
 
-        if ($results === false) {
-            echo mysqli_error($conn);
-        }
-        else {
-            $id  = mysqli_insert_id($conn);
+    $stmt = mysqli_prepare($conn, $sql);
+
+    if ($stmt === false) {
+
+        echo mysqli_error($conn);
+
+    } else {
+
+        mysqli_stmt_bind_param($stmt, "sss", $_POST['title'], $_POST['content'], $_POST['published_at']);
+
+        if (mysqli_stmt_execute($stmt)) {
+
+            $id = mysqli_insert_id($conn);
             echo "Inserted record with ID: $id";
+
+        } else {
+
+            echo mysqli_stmt_error($stmt);
+
         }
     }
+}
+
 ?>
+<?php require 'includes/header.php'; ?>
+<!DOCTYPE html>
 
-<!doctype html>
-<head>
-    <title>New Article</title>
-    <link rel="stylesheet" type="text/css" href="CSS/transition.css"/>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="CSS/styles.css" />
-    <style>
-        form{
-            margin-top:1rem;
-            margin-left:2rem;
-        }
-        label{
-            color:rgb(212, 203, 68);
-        }
-        #div1{
-            margin-top: 1rem;
-            
-        }
-        </style
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link ref="stylesheet" href="CSS/styles.css">
+        
+        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+       
+        <title>New Article</title>
     </head>
-    <form method="post" class="item">
-    <h2>New Article</h2>
- <div class="square">
-    <div id="div1">
-        <label for="title">Title</label>
-        <input name="title" id="title" placeholder="Article Title"> 
-    </div>  
-    
-    <div class=item>
-            <label for="content">Content</label>
-            <textarea name="content" rows="4" cols="40" id="content" placeholder="Article Content"></textarea>  
-    </div>
-    
-    <div>
-            <label for="published_at" >Publication Date and Time</label>
-            <input type="datetime-local" name="published_at" id="published_at" >
-    </div>
-    <div>
-        <button type="submit" class="btn btn-success button1 button1:hover">Submit</button>
-    </div>
-</div>  
 
-</form>
+    <body>
+        <main class="square">
 
-<?php require 'includes/footer.php'; ?>
+                <div class="mx-auto" style="width: 400px;">
+                <div class="mb-3">
+                        <fieldset>
+                            <legend>Title</legend >
+                                    <label for="textBox" class="form-label" id="coloration">Title</label>
+                                    <input type="text" autofocus required class="form-control" id="textBox" name="title" placeholder="Title">
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="mb-3">
+                                <label for="textBox2" class="form-label" id="coloration2">Content</label>
+                                <textarea name="content" rows="4" cols="40" id="textBox2" placeholder="Article content"></textarea>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="mb-3">
+                                <label for="textBox3" class="form-label" id="coloration2">Publication Date and Time</label>
+                                <input type="datetime-local" name="published_at" id="textBox3">
+                            </div>
+                        </fieldset>
+                    
+                        <div>
+                        <button type="submit" class="btn btn-success button1 button1:hover">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </body>
+</html>
+

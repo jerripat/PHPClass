@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@loadingio/transition.css": "^2.0.1",
     "dd-trace": "^1.6.0"
   }
 }

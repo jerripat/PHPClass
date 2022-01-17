@@ -1,20 +1,25 @@
 <?php 
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' ) {   
-        $sql = "SELECT * 
-                     FROM cms_article
-                     WHERE id = " . $_GET['id'];
+    
+    require 'includes/database.php';
+    
+        $sql = "INSERT INTO cms_article (title, content, published_at)
+                     VALUES (' " .  $_POST[ 'title' ] . " ' , ' "
+                                           .  $_POST[ 'content' ] . " ' , ' "
+                                           .  $_POST[ 'published_at' ] . " ' ) ";
+                       
                     
         $results = mysqli_query($conn, $sql);
 
 
         if ($results === false) {
             echo mysqli_error($conn);
-           
         }
         else {
-            
-            $article = mysqli_fetch_assoc($results);
-            
+            $id  = mysqli_insert_id($conn);
+            echo "Inserted record with ID: $id";
         }
     }
 ?>

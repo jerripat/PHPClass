@@ -1,5 +1,6 @@
 <?php
 require 'includes/database.php';
+$conn = getDB();
 
 $sql = "SELECT *  FROM cms_article ORDER BY published_at;";
 

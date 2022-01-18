@@ -1,4 +1,5 @@
-<?php require 'includes/database.php'; ?>
+<?php 
+require 'includes/database.php';
 
 
 $conn =getDB();
@@ -24,49 +25,25 @@ else {
 ?>
 <?php require 'includes/header.php'; ?>
 
-<!DOCTYPE html>
 
-<html lang="en">
-
-    <head>
-        <title>Article</title>
+        
+        <meta charset="utf-8">
          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
             <style>
                 <?php include 'CSS/styles'; ?>
             </style>
     </head>
-
-    <style>
-      body {
-            background: #cccbc6;
-            text-align: center;
-        }
-        article{
-            color:white;
-        }
-        .square {
-            background: #3254a8;
-            width: 25rem;
-            aspect-ratio: 2/1;
-            border: solid black;
-            box-shadow: 15px 15px 10px rgba(60, 56, 140, 1);
-            display: block;
-            margin-top: 3rem;
-            margin-left: 10rem;
-        }
-    </style>
-<body>
-    <div class="square">
+    <body>
+        <main>
         <?php if ($article === null): ?>
            <p>No articles found.</p>
-        <?php else: ?>
-                <article>
-                    <h2><<?= $article['title']; ?></h2>
-                    <p><?= $article['content']; ?></p>
-                </article>
-        <?php endif; ?>
-    </div>
-</body>
- <?php require 'includes/footer.php'; ?>      
+            <?php else: ?>
+                    <article>
+                        <h2><<?= $article['title']; ?></h2>
+                        <p><?= $article['content']; ?></p>
+                    </article>
+            <?php endif; ?>
+        </main>
+    </body>      
  </html>

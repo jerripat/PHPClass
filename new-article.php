@@ -1,13 +1,13 @@
 <?php
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+if ($_SERVER["REQUEST_METHOD"]  == "POST") {
     
-    #$conn =getDB();
+  $conn =getDB();
 
     
-    $sql = "INSERT INTO cms_article (title, content, published_at)
-            VALUES (?, ?, ?)";
+    $sql = "INSERT INTO cms_article (title, content, published_at)  VALUES (?, ?, ?)";
 
     $stmt = mysqli_prepare($conn, $sql);
     
@@ -16,37 +16,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        } else {
             mysqli_stmt_bind_param($stmt, "sss", $_POST['title'], $_POST['content'], $_POST['published_at']);
     
-        if (mysqli_stmt_execute($stmt)) {
-        
-            $id = mysqli_insert_id($conn);
-            echo "Inserted record with ID: $id";
-        
-        } else {
-            echo mysqli_stmt_error($stmt);
-        }
+                if (mysqli_stmt_execute($stmt)) {
+                
+                    $id = mysqli_insert_id($conn);
+                    echo "Inserted record with ID: $id";
+                
+                } else {
+                    echo mysqli_stmt_error($stmt);
+                }
     }
 }
 ?>
 
  <?php require 'includes/header.php'; ?>
-<!DOCTYPE html>
 
-<html lang="en">
-     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
              integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-             
-            <style>
+             <style>
                 <?php include 'CSS/styles.css'; ?>
             </style>
-                        <title>New Article</title>
-     </head>
-    
-    <body>
-        <main class="square">
-            <form>
+                    
+          
+            <form method="post">
                 <div class="mx-auto" style="width: 400px;">
                     <div class="mb-3">
                         <fieldset>
@@ -71,8 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </div>
                 </form>
-            </main>
+            
             <?php require "includes/footer.php" ?>
-    </body>
-</html> -->
-
+  

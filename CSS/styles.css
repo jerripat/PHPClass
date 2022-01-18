@@ -8,9 +8,12 @@
             color:rgb(212, 203, 68);
         }
         body {
-            background-color: #9695a1;
+            background-color:  #9695a1;
             text-align: center;
         }
+        ul{
+                     align-items:left;
+                    }
         .square {
             background: #3254a8;
             width: 25rem;
@@ -18,7 +21,7 @@
             border: solid black;
             box-shadow: 15px 15px 10px rgba(60, 56, 140, 1);
             display: block;
-            margin-top: 3rem;
+            margin-top: 2rem;
             margin-left: 10rem;
         }
 
@@ -47,13 +50,13 @@
         #textBox2 {
             width: 15rem;
             height: auto;
-            margin-left: 5rem;
+            margin-left: 0rem;
             text-align:center;
         }
          #textBox3 {
             width: 15rem;
             height: auto;
-            margin-left: 5rem;
+            margin-left: 0rem;
             text-align:center;
         }
 
@@ -64,13 +67,8 @@
         #coloration2 {
             color: #e0e640;
         }
-
-        select {
-            padding: 2px;
-            margin-top: 1px0;
-        }
-        legend{
-            color: yellow;
+        #moveTitle{
+            margin-top: 5px;
         }
         .container {
               display:display-box;
@@ -82,12 +80,16 @@
             }
             .container:after {
               display: block;
-              content: " placeholder ";
+              content: placeholder;
               margin: 10px;
               flex: 999 999 auto;
             }
             .item {
               justify-content:center;
               margin: 10px;
+            }
+            .btn{
+                margin-top:1rem;
+               padding:10px;
             }
        

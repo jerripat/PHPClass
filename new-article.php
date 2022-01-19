@@ -1,11 +1,14 @@
 <?php 
 require 'includes/database.php';
+$errors =[];
+$title ='';
+$content = '';
+$published_at = '';
 
-    
 if ($_SERVER["REQUEST_METHOD"]  == "POST") {
     
-    $errors =[];
-    
+            $title = $_POST['title'];
+            
             if ($_POST['title'] == ''){
                 $errors[] = "Title is required";
             }
@@ -13,8 +16,8 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST") {
                 $errors[] = 'Content is required';
             }
             if (empty($errors)){
-                 $conn =getDB();
-                 $sql = "INSERT INTO cms_article (title, content, published_at)  VALUES (?, ?, ?)";
+                $conn =getDB();
+                $sql = "INSERT INTO cms_article (title, content, published_at)  VALUES (?, ?, ?)";
                 $stmt = mysqli_prepare($conn, $sql);
     
              if ($stmt === false) {
@@ -65,14 +68,14 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST") {
                 <div class="mx-auto" style="width: 400px;">
                     <div class="mb-3">
                             <label for="textBox" class="form-label" id="coloration">Title</label>
-                            <input type="text" autofocus class="form-control" id="textBox" name="title" placeholder="Title">
+                            <input type="text" autofocus class="form-control" id="textBox" name="title" placeholder="Article Title" value="<?= htmlspecialchars($title); ?> ">
                     </div>
                     <div class="mb-3">
-                        <textarea name="content" rows="4" cols="40" id="textBox2" placeholder="Article Content"></textarea>
+                        <textarea name="content" rows="4" cols="40" id="textBox2" placeholder="Article Content"><?= htmlspecialchars($content); ?></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="textBox3" class="form-label" id="coloration2">Publication Date and Time</label>
-                        <input type="datetime-local" name="published_at" id="textBox3">
+                        <input type="datetime-local" name="published_at" id="textBox3" value="<?= htmlspecialchars($published_at); ?>" >
                     </div>
                     <div class="btn">
                         <button type="submit" class="btn btn-success button1 button1:hover">Submit</button>

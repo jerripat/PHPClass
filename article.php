@@ -33,6 +33,7 @@ else {
             <style>
                 <?php include 'CSS/styles'; ?>
             </style>
+            <title>My Blog</title>
     </head>
     <body>
         <main>
@@ -40,7 +41,7 @@ else {
            <p>No articles found.</p>
             <?php else: ?>
                     <article>
-                        <h2><<?= htmlspecialchars($article['title']); ?></h2>
+                        <h2><?= htmlspecialchars($article['title']); ?></h2>
                         <p><?= htmlspecialchars($article['content']); ?></p>
                     </article>
             <?php endif; ?>

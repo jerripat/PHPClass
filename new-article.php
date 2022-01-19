@@ -23,7 +23,12 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST") {
              if ($stmt === false) {
                     echo mysqli_error($conn);
        }    else {
-            mysqli_stmt_bind_param($stmt, "sss", $_POST['title'], $_POST['content'], $_POST['published_at']);
+                    if ($published_at != ' '){
+                        $published_at = null;
+                    }else{
+                        $date_time = date_create_from_format('Y-m-d H:i:s', $published_at);
+                    }
+            mysqli_stmt_bind_param($stmt, "sss", $title, $content, $published_at);
     
                 if (mysqli_stmt_execute($stmt)) {
                 
@@ -63,19 +68,18 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST") {
                 </ul>
              <?php endif ?>    
               </div>   
-          
-            <form method="post" class="square container">
+             <form method="post" class="square container">
                 <div class="mx-auto" style="width: 400px;">
                     <div class="mb-3">
                             <label for="textBox" class="form-label" id="coloration">Title</label>
-                            <input type="text" autofocus class="form-control" id="textBox" name="title" placeholder="Article Title" value="<?= htmlspecialchars($title); ?> ">
+                            <input type="text" autofocus class="form-control" id="textBox" name="title" placeholder="Article Title" value="<?=htmlspecialchars($title); ?> ">
                     </div>
                     <div class="mb-3">
-                        <textarea name="content" rows="4" cols="40" id="textBox2" placeholder="Article Content"><?= htmlspecialchars($content); ?></textarea>
+                        <textarea name="content" rows="4" cols="40" id="textBox2" placeholder="Article Content"><?=htmlspecialchars($content); ?></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="textBox3" class="form-label" id="coloration2">Publication Date and Time</label>
-                        <input type="datetime-local" name="published_at" id="textBox3" value="<?= htmlspecialchars($published_at); ?>" >
+                        <input type="datetime-local" name="published_at" id="textBox3" placeholder="" >
                     </div>
                     <div class="btn">
                         <button type="submit" class="btn btn-success button1 button1:hover">Submit</button>

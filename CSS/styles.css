@@ -30,6 +30,7 @@
             height: 18rem;
             width: auto;
             margin-top: 2rem;
+            align-items:center;
         }
 
         .button1 {
@@ -69,12 +70,13 @@
         }
         #moveTitle{
             margin-top: 5px;
+            
         }
         .container {
               display:display-box;
               flex-wrap: wrap;
               flex-direction: row;
-              justify-content: start;
+              justify-content: center;
               align-items: auto;
               align-content: start
             }

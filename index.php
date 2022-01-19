@@ -17,6 +17,7 @@ else {
 ?> 
 
 <?php require 'includes/header.php'; ?>
+<a href="new_article.php"New Article</a>
 
             <?php if (empty($articles)): ?>
             

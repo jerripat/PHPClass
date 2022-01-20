@@ -10,7 +10,7 @@
 
 function getArticle($conn, $id){ 
     $sql="SELECT * FROM cms_article
-                WHERE id=? ";
+                WHERE id= ? ";
                 
     $stmt = mysqli_prepare($conn, $sql);   
     
@@ -28,4 +28,3 @@ function getArticle($conn, $id){
     }
     
 }            
-?>

@@ -8,30 +8,35 @@
             color:rgb(212, 203, 68);
         }
         body {
-            background-color:  #9695a1;
+            background-color:  #7f7c9b;
             text-align: center;
+        }
+        label{
+            color:cyan;
         }
         ul{
                      align-items:left;
                     }
         .square {
-            background: #3254a8;
+            background: #1c3b8a;
             width: 25rem;
             aspect-ratio: 2/1;
             border: solid black;
             box-shadow: 15px 15px 10px rgba(60, 56, 140, 1);
             display: block;
-            margin-top: 2rem;
+            margin-top: 5em;
             margin-left: 10rem;
+        }
+        div1{
+            margin-top: 10rem;
         }
 
         form {
             display: block;
-            height: 18rem;
-            width: auto;
+            height: 20rem;
+            width:20rem;
             margin-top: 2rem;
-            align-items:center;
-        }
+                  }
 
         .button1 {
             box-shadow: 0 10px 16px 0 rgba(3, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -72,14 +77,14 @@
             margin-top: 5px;
             
         }
-        .container {
+       .container {
               display:display-box;
               flex-wrap: wrap;
               flex-direction: row;
               justify-content: center;
               align-items: auto;
               align-content: start
-            }
+            } 
             .container:after {
               display: block;
               content: placeholder;

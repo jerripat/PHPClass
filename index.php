@@ -1,9 +1,10 @@
 <?php
+
 require 'includes/database.php';
 
 $conn = getDB();
 
-$sql = "SELECT *  FROM cms_article ORDER BY published_at;";
+$sql = "SELECT *  FROM  article ORDER BY published_at;";
 
 $results = mysqli_query($conn, $sql);
 
